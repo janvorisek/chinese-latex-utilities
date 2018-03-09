@@ -1,0 +1,94 @@
+% Name: hanzibox
+% Description: Package for configurable character boxes
+% 
+% Last modified
+% Date: 2018/03/10
+% Author: Jan Vorisek <jan@vorisek.me>
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{hanzibox}[2018/03/10 hanzibox]
+
+\RequirePackage{tikz}
+\usetikzlibrary{decorations}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{positioning}
+\RequirePackage{hanpin}
+\RequirePackage{xstring,xifthen,stringstrings}
+
+%used as tmp color%
+\definecolor{character_color}{RGB}{170,170,170}
+
+% Options for hanzibox command
+\define@key{hanzibox}{inner}{\def\mm@in{#1}}
+\define@key{hanzibox}{border}{\def\mm@bo{#1}}
+\define@key{hanzibox}{borderWidth}{\def\mm@bw{#1}}
+\define@key{hanzibox}{borderColor}{\def\mm@bc{#1}}
+\define@key{hanzibox}{pinyin}{\def\mm@pin{#1}}
+\define@key{hanzibox}{character}{\def\mm@char{#1}}
+\define@key{hanzibox}{translation}{\def\mm@tran{#1}}
+
+\tikzset{%
+	stretch dash/.code args={on #1 off #2}{%
+		\tikz@addoption{%
+			\pgfgetpath\currentpath%
+			\pgfprocessround{\currentpath}{\currentpath}%
+			\pgf@decorate@parsesoftpath{\currentpath}{\currentpath}%
+			\pgfmathparse{max(round((\pgf@decorate@totalpathlength-#1)/(#1+#2)),0)}%
+			\let\npattern=\pgfmathresult%
+			\pgfmathparse{\pgf@decorate@totalpathlength/(\npattern*(#1+#2)+#1)}%
+			\let\spattern=\pgfmathresult%
+			\pgfsetdash{{\spattern*#1}{\spattern*#2}}{0pt}%
+		}%
+	}%
+}
+
+\newcommand\hanzidialog[3]{%
+	\tikz[scale=0.5, every node/.style={inner sep=0,outer sep=0}]{%
+		{\node[] at (1,1){\huge#2};}%
+		%\StrLen{#1}[\MyStrLen]
+		%\ifthenelse{\MyStrLen > 4}% we compare the length of the string with 6
+		%{\node[anchor=south, align=center] {\strut\small\mbox{#1}};}%
+		%{\node[above of charr, anchor=south, align=center] at (1,2){\strut#1};}%
+		{\node[label={\strut\small\textbf{#1}}, text height=1cm] (charr) at (1,1){};}%
+		%{\node[right=0 of charr] {:};}%
+		{\node[align=center] at (1,-0.2){\strut\tiny\textit{#3}};}%
+	}%
+}%
+
+\newcommand\drawhanzibox{%
+	\tikz[scale=0.5, every node/.style={inner sep=0,outer sep=0}]{%
+		%\draw[cheating dash=on 2pt off 2pt distance 2pt,thin,gray](0,0)grid(2,2);%
+		\ifthenelse{\equal{\mm@in}{star}}
+		{
+			\draw[stretch dash=on 2pt off 2pt,thin,gray](0,0)--(2,2);%
+			\draw[stretch dash=on 2pt off 2pt,thin,gray](0,2)--(2,0);%
+			
+			\draw[stretch dash=on 2pt off 2pt,thin,gray](0,1)--(2,1);%
+			\draw[stretch dash=on 2pt off 2pt,thin,gray](1,0)--(1,2);%
+		}
+		{
+			\ifthenelse{\equal{\mm@in}{cross}}
+			{	
+				\draw[stretch dash=on 2pt off 2pt,thin,gray](0,1)--(2,1);%
+				\draw[stretch dash=on 2pt off 2pt,thin,gray](1,0)--(1,2);%
+			}
+			{}%
+		}%
+		\ifthenelse{\equal{\mm@bo}{yes}}{\draw[thin, black] (0,0) rectangle(2,2.1);}{}%
+		{\node[] at (1,1){\huge\mm@char};}%
+		%
+		\StrLen{\mm@pin}[\pinlen]%
+		{\node[label={\strut\small\ifthenelse{\pinlen = 0}{\mm@pin}{\pinyin{\mm@pin}}}, text height=1cm] (charr) at (1,1){};}%
+		{\node[align=center] at (1,-0.2){\strut\tiny\textit{\mm@tran}};}%
+	}%
+}%
+
+\newcommand\hanzibox[2]{%
+	\begingroup%
+		% Set keys + defaults if options not provided
+		\setkeys{hanzibox}{pinyin={},character={},translation={},#1}%
+		\setkeys{hanzibox}{inner={star},border=yes,borderWidth={0.4pt},borderColor={0,0,0},#2}%
+		\drawhanzibox%
+	\endgroup%
+}
+\endinput

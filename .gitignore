@@ -50,4 +50,5 @@ Temporary Items
 *.synctex.gz
 *.log
 *.aux
+*.out
 latex/*.pdf
