@@ -52,3 +52,4 @@ Temporary Items
 *.aux
 *.out
 latex/*.pdf
+latex/hanzisheet.cls
