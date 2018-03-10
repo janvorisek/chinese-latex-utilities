@@ -58,28 +58,29 @@
 \newcommand\drawhanzibox{%
 	\tikz[scale=0.5, every node/.style={inner sep=0,outer sep=0}]{%
 		%\draw[cheating dash=on 2pt off 2pt distance 2pt,thin,gray](0,0)grid(2,2);%
-		\ifthenelse{\equal{\mm@in}{star}}
-		{
+		\ifthenelse{\equal{\mm@in}{star}}%
+		{%
 			\draw[stretch dash=on 2pt off 2pt,thin,gray](0,0)--(2,2);%
 			\draw[stretch dash=on 2pt off 2pt,thin,gray](0,2)--(2,0);%
 			
 			\draw[stretch dash=on 2pt off 2pt,thin,gray](0,1)--(2,1);%
 			\draw[stretch dash=on 2pt off 2pt,thin,gray](1,0)--(1,2);%
-		}
-		{
-			\ifthenelse{\equal{\mm@in}{cross}}
+		}%
+		{%
+			\ifthenelse{\equal{\mm@in}{cross}}%
 			{	
 				\draw[stretch dash=on 2pt off 2pt,thin,gray](0,1)--(2,1);%
 				\draw[stretch dash=on 2pt off 2pt,thin,gray](1,0)--(1,2);%
-			}
+			}%
 			{}%
 		}%
-		\ifthenelse{\equal{\mm@bo}{yes}}{\draw[thin, black] (0,0) rectangle(2,2.1);}{}%
+		\ifthenelse{\equal{\mm@bo}{yes}}{\draw[thin, black] (0,0) rectangle(2,2);}{}%
 		{\node[] at (1,1){\huge\mm@char};}%
 		%
 		\StrLen{\mm@pin}[\pinlen]%
-		{\node[label={\strut\small\ifthenelse{\pinlen = 0}{\mm@pin}{\pinyin{\mm@pin}}}, text height=1cm] (charr) at (1,1){};}%
-		{\node[align=center] at (1,-0.2){\strut\tiny\textit{\mm@tran}};}%
+		\StrLen{\mm@tran}[\tranlen]%
+		\ifthenelse{\pinlen = 0}{}{\node[label={\strut\small\pinyin{\mm@pin}}, text height=1cm] (charr) at (1,1){};}%
+		\ifthenelse{\tranlen = 0}{}{\node[align=center] at (1,-0.2){\strut\tiny\textit{\mm@tran}};}%
 	}%
 }%
 
