@@ -14,7 +14,7 @@ Boxes with star | Boxes with cross | Empty boxes
 ---|---|---
 [![Boxes with star](https://jan.vorisek.me/images/sq2.jpg "Boxes with star")](pdf/grid/star.pdf) | [![Boxes with star](https://jan.vorisek.me/images/sq1.jpg "Boxes with star")](pdf/grid/cross.pdf) | [![Boxes with star](https://jan.vorisek.me/images/sq3.jpg "Boxes with star")](pdf/grid/empty.pdf)
 
-Characters grids are made using *lates/grid.tex* with various options.
+Character grids are made using *latex/grid.tex* with various options. You can easily customise the script to support different papers, add more pages etc.
 
 ## LaTeX
 
