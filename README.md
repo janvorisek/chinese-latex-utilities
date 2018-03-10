@@ -6,9 +6,17 @@ Utilities for chinese in LaTeX. Create practise sheets, dialogs, character expla
 
 ## Examples
 
-You can find examples in the pdf folder.
+### Character grid
 
-### LaTeX
+Click to open corresponding PDF.
+
+Boxes with star | Boxes with cross | Empty boxes
+---|---|---
+[![Boxes with star](https://jan.vorisek.me/images/sq2.jpg "Boxes with star")](pdf/grid/star.pdf) | [![Boxes with star](https://jan.vorisek.me/images/sq1.jpg "Boxes with star")](pdf/grid/cross.pdf) | [![Boxes with star](https://jan.vorisek.me/images/sq3.jpg "Boxes with star")](pdf/grid/empty.pdf)
+
+Characters grids are made using *lates/grid.tex* with various options.
+
+## LaTeX
 
 See *latex* folder.
 
