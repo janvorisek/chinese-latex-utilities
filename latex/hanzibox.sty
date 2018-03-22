@@ -2,11 +2,11 @@
 % Description: Package for configurable character boxes
 % 
 % Last modified
-% Date: 2018/03/10
+% Date: 2018/03/22
 % Author: Jan Vorisek <jan@vorisek.me>
 
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{hanzibox}[2018/03/10 hanzibox]
+\ProvidesPackage{hanzibox}[2018/03/22 hanzibox]
 
 \RequirePackage{tikz}
 \usetikzlibrary{decorations}
@@ -14,9 +14,12 @@
 \usetikzlibrary{positioning}
 \RequirePackage{hanpin}
 \RequirePackage{xstring,xifthen,stringstrings}
+\usepackage[utf8]{inputenc}
 
 %used as tmp color%
 \definecolor{character_color}{RGB}{170,170,170}
+
+\makeatletter
 
 % Options for hanzibox command
 \define@key{hanzibox}{inner}{\def\mm@in{#1}}
@@ -55,10 +58,25 @@
 	}%
 }%
 
+% Multibyte string length
+% Author: David Carlisle
+% https://tex.stackexchange.com/questions/419215/multibyte-strlen-strlen-for-chinese-characters
+\def\zz#1{\zzz0#1\relax}
+\def\zzz#1#2{%
+	\ifx\relax#2 \the\numexpr#1\relax
+	\else
+	\expandafter\zzz\expandafter{%
+		\the\numexpr(#1+\ifnum\expandafter`\string#2<"80 1\else \ifnum\expandafter`\string#2>"BF 1 \else 0 \fi\fi
+		\expandafter)\expandafter\relax\expandafter}%
+	\fi}
+
 \newcommand\drawhanzibox{%
 	\tikz[scale=0.5, every node/.style={inner sep=0,outer sep=0}]{%
 		%\draw[cheating dash=on 2pt off 2pt distance 2pt,thin,gray](0,0)grid(2,2);%
-		\ifthenelse{\equal{\mm@in}{star}}%
+		%\pgfmathsetmacro\nboxlen{2*{#1}}
+		%\StrLen{\mm@pin}[\charlen]%
+		\def\charslen{\expandafter\zz\expandafter{\mm@char}}
+		\ifthenelse{\equal{\mm@in}{star} \AND \charslen < 2}%
 		{%
 			\draw[stretch dash=on 2pt off 2pt,thin,gray](0,0)--(2,2);%
 			\draw[stretch dash=on 2pt off 2pt,thin,gray](0,2)--(2,0);%
@@ -67,20 +85,29 @@
 			\draw[stretch dash=on 2pt off 2pt,thin,gray](1,0)--(1,2);%
 		}%
 		{%
-			\ifthenelse{\equal{\mm@in}{cross}}%
+			\ifthenelse{\equal{\mm@in}{cross} \AND \charslen < 2}%
 			{	
 				\draw[stretch dash=on 2pt off 2pt,thin,gray](0,1)--(2,1);%
 				\draw[stretch dash=on 2pt off 2pt,thin,gray](1,0)--(1,2);%
 			}%
 			{}%
 		}%
-		\ifthenelse{\equal{\mm@bo}{yes}}{\draw[thin, black] (0,0) rectangle(2,2);}{}%
-		{\node[] at (1,1){\huge\mm@char};}%
-		%
+		
 		\StrLen{\mm@pin}[\pinlen]%
 		\StrLen{\mm@tran}[\tranlen]%
-		\ifthenelse{\pinlen = 0}{}{\node[label={\strut\small\pinyin{\mm@pin}}, text height=1cm] (charr) at (1,1){};}%
-		\ifthenelse{\tranlen = 0}{}{\node[align=center] at (1,-0.2){\strut\tiny\textit{\mm@tran}};}%
+		\ifthenelse{\charslen = 0}%
+		{%
+			\draw[thin, black] (0,0) rectangle(2,2);
+			{\node[] at (1,1){\huge\mm@char};}%
+			\ifthenelse{\pinlen = 0}{}{\node[label={\strut\small\pinyin{\mm@pin}}, text height=1cm] (charr) at (1,1){};}%
+			\ifthenelse{\tranlen = 0}{}{\node[align=center] at (1,-0.2){\strut\tiny\textit{\mm@tran}};}%
+		}%
+		{%
+			\ifthenelse{\equal{\mm@bo}{yes}}{\draw[thin, black] (0,0) rectangle(2*\charslen,2);}{}%
+			{\node[] at (1*\charslen,1){\huge\mm@char};}%
+			\ifthenelse{\pinlen = 0}{}{\node[label={\strut\small\pinyin{\mm@pin}}, text height=1cm] (charr) at (1*\charslen,1){};}%
+			\ifthenelse{\tranlen = 0}{}{\node[align=center] at (1*\charslen,-0.2){\strut\tiny\textit{\mm@tran}};}%
+		}%
 	}%
 }%
 
@@ -91,5 +118,5 @@
 	\setkeys{hanzibox}{inner={star},border=yes,borderWidth={0.4pt},borderColor={0,0,0},#2}%
 	\drawhanzibox%
 	\endgroup%
-}
+}%
 \endinput
