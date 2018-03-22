@@ -2,7 +2,7 @@
 % Description: Multiple fancy examples
 % 
 % Last modified
-% Date: 2018/03/10
+% Date: 2018/03/22
 % Author: Jan Vorisek <jan@vorisek.me>
 
 \documentclass[]{report}
@@ -11,7 +11,7 @@
 \usepackage{hyperref} % for http link
 \usepackage{lastpage} % show page/lastPage
 \usepackage{fancyhdr}
-\usepackage[top=3.5cm,bottom=2.5cm,left=3.5cm,right=2.5cm,headsep=1cm,footskip=0pt]{geometry}
+\usepackage[top=2.5cm,bottom=1.5cm,left=2.5cm,right=1.5cm,headsep=1cm,footskip=0pt]{geometry}
 
 \pagestyle{fancy}
 
@@ -20,7 +20,7 @@
 \rhead{\textit{Jane Doe}}
 
 % Footer
-\lfoot{center of the footer!}
+\lfoot{你好 \pinyin{ni3\ hao3}!}
 \cfoot{\thepage/\pageref{LastPage}}
 \rfoot{\url{https://hanzisheets.vorisek.me}}
 
@@ -29,65 +29,63 @@
 \renewcommand{\footrulewidth}{0.4pt}
 
 \begin{document}	
-	\large\textbf{Explain words}
-	\vspace{0.25cm}
-	
-	\hanzibox{pinyin=ni3, character=你, translation=you}{}
-	\hanzibox{pinyin=, character=+, translation={\,}}{inner=none, border=no}
-	\hanzibox{pinyin=hao3, character=好, translation=good}{}
-	\hanzibox{pinyin=, character={=}, translation={\,}}{inner=none, border=no}
-	\hanzibox{pinyin=ni3, character=你, translation=hello}{}\hspace{-0.4pt}%
-	\hanzibox{pinyin=hao3, character=好, translation={\,}}{}
-	
-	\large\textbf{Character boxes filled}
-	\vspace{0.25cm}
+	\section*{Explain words}
 	
 	\begin{tabular}{@{}l@{}}
-		\hanzibox{pinyin=wo3, character=容}{inner=none}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3, character=容}{inner=none}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3, character=容}{inner=none}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3, character=容}{inner=none}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3, character=容}{inner=none}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3, character=容}{inner=none}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3, character=容}{inner=none}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3, character=容}{inner=none}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3, character=容}{inner=none}\hspace{-0.4pt}%  
+		\hanzibox{pinyin=ni3, character=你, translation=you}{}                    
+		\hanzibox{pinyin=, character=+, translation={\,}}{inner=none, border=no}   
+		\hanzibox{pinyin=hao3, character=好, translation=good}{}                  
+		\hanzibox{pinyin=, character={=}, translation={\,}}{inner=none, border=no} 
+		\hanzibox{pinyin={ni3\ hao3}, character=你好, translation=hello}{}%    
 		\\
 	\end{tabular}
 	
-	\large\textbf{Character boxes with \textit{inner cross}}
-	\vspace{0.25cm}
+	\section*{Character boxes filled}
 	
 	\begin{tabular}{@{}l@{}}
-		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%  
-		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%  
+		\hanzibox{pinyin=wo3, character=我}{inner=none}\hspace{-0.4pt}%   
+		\hanzibox{pinyin=wo3, character=我}{inner=none}\hspace{-0.4pt}%   
+		\hanzibox{pinyin=wo3, character=我}{inner=none}\hspace{-0.4pt}%   
+		\hanzibox{pinyin=wo3, character=我}{inner=none}\hspace{-0.4pt}%   
+		\hanzibox{pinyin=wo3, character=我}{inner=none}\hspace{-0.4pt}%   
+		\hanzibox{pinyin=wo3, character=我}{inner=none}\hspace{-0.4pt}%   
+		\hanzibox{pinyin=wo3, character=我}{inner=none}\hspace{-0.4pt}%   
+		\hanzibox{pinyin=wo3, character=我}{inner=none}\hspace{-0.4pt}%   
+		\hanzibox{pinyin=wo3, character=我}{inner=none}\hspace{-0.4pt}%   
 		\\
 	\end{tabular}
 	
-	\large\textbf{Character boxes with \textit{inner star} \, [\textbf{default}]}
+	\section*{Character boxes with \textit{inner cross}}
 	
 	\begin{tabular}{@{}l@{}}
-		\hanzibox{pinyin=wo3}{}\hspace{-0.4pt}%  
-		\hanzibox{}{}\hspace{-0.4pt}%                      
-		\hanzibox{}{}\hspace{-0.4pt}%                      
-		\hanzibox{}{}\hspace{-0.4pt}%                      
-		\hanzibox{}{}\hspace{-0.4pt}%                      
-		\hanzibox{}{}\hspace{-0.4pt}%                      
-		\hanzibox{}{}\hspace{-0.4pt}%                      
-		\hanzibox{}{}\hspace{-0.4pt}%                      
-		\hanzibox{}{}\hspace{-0.4pt}%                      
+		\hanzibox{pinyin=wo3, character=我}{inner=cross}\hspace{-0.4pt}%   
+		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%                  
+		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%                  
+		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%                  
+		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%                  
+		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%                  
+		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%                  
+		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%                  
+		\hanzibox{pinyin=wo3}{inner=cross}\hspace{-0.4pt}%                  
 		\\
 	\end{tabular}
 	
-	\large\textbf{Dialog}
-	\vspace{0.25cm}
+	\section*{Character boxes with \textit{inner star} \, [\textbf{default}]}
+	
+	\begin{tabular}{@{}l@{}}
+		\hanzibox{pinyin=wo3, character=我}{}\hspace{-0.4pt}%   
+		\hanzibox{}{}\hspace{-0.4pt}%                                                
+		\hanzibox{}{}\hspace{-0.4pt}%                                                
+		\hanzibox{}{}\hspace{-0.4pt}%                                                
+		\hanzibox{}{}\hspace{-0.4pt}%                                                
+		\hanzibox{}{}\hspace{-0.4pt}%                                                
+		\hanzibox{}{}\hspace{-0.4pt}%                                                
+		\hanzibox{}{}\hspace{-0.4pt}%                                                
+		\hanzibox{}{}\hspace{-0.4pt}%                                                
+		\\
+	\end{tabular}
+	
+	\section*{Dialog}
 	
 	\begin{tabular}{|c|l|}
 		\hline%
@@ -95,35 +93,35 @@
 		\hanzidialog{Liang \pinyin{Lao2shi4}}{梁老师}{Učitelka Liang}%
 		&   
 		\hanzibox{pinyin=Lao3shi1, character=容, translation=trains}{}\hspace{-0.4pt}%
-		\hanzibox{pinyin=wo3, character=容, translation=trains}{}\hspace{-0.4pt}%
-		\hanzibox{pinyin=ma1, character=容, translation=train|s}{}\hspace{-0.4pt}%
-		\hanzibox{pinyin=wo3, character=容, translation=trains}{}\hspace{-0.4pt}%
-		\hanzibox{pinyin=wo3, character=容, translation=trains}{}\hspace{-0.4pt}%
-		\hanzibox{pinyin=wo3, character=容, translation=trains}{}\hspace{-0.4pt}%
-		\hanzibox{pinyin=wo3, character=容, translation=trains}{}\hspace{-0.4pt}%
-		\hanzibox{pinyin=wo3, character=容, translation=trains}{}\hspace{-0.4pt}%
-		\hanzibox{pinyin=wo3, character=容, translation=trains}{}\hspace{-0.4pt}%
+		\hanzibox{pinyin=wo3, character=我, translation=trains}{}\hspace{-0.4pt}%
+		\hanzibox{pinyin=ma1, character=妈, translation=train|s}{}\hspace{-0.4pt}%
+		\hanzibox{pinyin=wo3, character=我, translation=trains}{}\hspace{-0.4pt}%
+		\hanzibox{pinyin=wo3, character=我, translation=trains}{}\hspace{-0.4pt}%
+		\hanzibox{pinyin=wo3, character=我, translation=trains}{}\hspace{-0.4pt}%
+		\hanzibox{pinyin=wo3, character=我, translation=trains}{}\hspace{-0.4pt}%
+		\hanzibox{pinyin=wo3, character=我, translation=trains}{}\hspace{-0.4pt}%
+		\hanzibox{pinyin=wo3, character=我, translation=trains}{}\hspace{-0.4pt}%
 		\\\hline%
 		\rule{0pt}{65pt} % for nice top padding
-		\hanzidialog{Wang Lang}{容容容}{Some lady}%
+		\hanzidialog{\pinyin{ma1ma5}}{妈妈}{Mother}%
 		&   
 		\hanzibox{pinyin=Lao3, character=老, translation=starý}{}\hspace{-0.4pt}%
 		\hanzibox{pinyin=shi1, character=师, translation=učitel}{inner=cross}\hspace{1cm}%
 		\hanzibox{pinyin=ma1, translation=none}{inner=none}\hspace{-0.4pt}%
 		\hanzibox{pinyin=ma1, translation=none}{inner=none}\hspace{1cm}%
-		\hanzibox{pinyin=wo3, character=容, translation=trains}{}\hspace{-0.4pt}%
-		\hanzibox{pinyin=wo3, character=容, translation=trains}{}\hspace{-0.4pt}%
+		\hanzibox{pinyin=wo3, character=我, translation=trains}{}\hspace{-0.4pt}%
+		\hanzibox{pinyin=wo3, character=我, translation=trains}{}\hspace{-0.4pt}%
 		\\\hline
 		\rule{0pt}{65pt} % for nice top padding 
-		\hanzidialog{Wang Laoshi}{容容}{Paní Liang}%
+		\hanzidialog{\pinyin{ba4ba5}}{爸爸}{Father}%
 		&   
 		\hanzibox{pinyin=Lao3shi1, character=容, translation=trains}{inner=none}\hspace{-0.4pt}%
-		\hanzibox{pinyin=wo3, character=容, translation=trains}{inner=none}\hspace{-0.4pt}%
-		\hanzibox{pinyin=ma1, character=容, translation=train|s}{inner=cross}\hspace{-0.4pt}%
-		\hanzibox{pinyin=wo3, character=容, translation=trains}{}\hspace{-0.4pt}%
-		\hanzibox{pinyin=wo3, character=容, translation=trains}{}\hspace{-0.4pt}%
-		\hanzibox{pinyin=wo3, character=容, translation=trains}{}\hspace{-0.4pt}%
-		\hanzibox{pinyin=wo3, character=容, translation=trains}{}\hspace{-0.4pt}%
+		\hanzibox{pinyin=wo3, character=我, translation=trains}{inner=none}\hspace{-0.4pt}%
+		\hanzibox{pinyin=ma1, character=妈, translation=train|s}{inner=cross}\hspace{-0.4pt}%
+		\hanzibox{pinyin=wo3, character=我, translation=trains}{}\hspace{-0.4pt}%
+		\hanzibox{pinyin=wo3, character=我, translation=trains}{}\hspace{-0.4pt}%
+		\hanzibox{pinyin=wo3, character=我, translation=trains}{}\hspace{-0.4pt}%
+		\hanzibox{pinyin=wo3, character=我, translation=trains}{}\hspace{-0.4pt}%
 		\\\hline%
 	\end{tabular}
 \end{document} 
