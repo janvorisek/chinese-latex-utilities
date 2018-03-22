@@ -1,4 +1,5 @@
 # chinese-latex-utilities
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L6PE9DXFGXPY6)
 
 Utilities for chinese in LaTeX. Create practise sheets, dialogs, character explanations and more. There are PDFs included which may be useful to regular users. 
 
