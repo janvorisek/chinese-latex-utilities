@@ -2,7 +2,7 @@
 % Description: Grids for chinese characters writing practise
 % 
 % Last modified
-% Date: 2018/03/10
+% Date: 2018/03/22
 % Author: Jan Vorisek <jan@vorisek.me>
 
 \documentclass[]{report}
@@ -12,7 +12,7 @@
 \usepackage{hyperref} % for http link
 \usepackage{lastpage} % show page/lastPage
 \usepackage{fancyhdr}
-\usepackage[top=3.5cm,bottom=2.5cm,left=3.5cm,right=2.5cm,headsep=1cm,footskip=0pt]{geometry}
+\usepackage[top=2.5cm,bottom=1.5cm,left=2.5cm,right=1.5cm,headsep=1cm,footskip=0pt]{geometry}
 
 %% Grid settings 
 % Number of A4 pages
@@ -44,8 +44,8 @@
 \begin{document}
 	\centering%
 	% 21 rows and 15 columns = A4 paper
-	\foreach \m in {1,...,\the\numexpr\pages*21\relax}{%
-		\foreach \n in {1,...,15}{%
+	\foreach \m in {1,...,\the\numexpr\pages*23\relax}{%
+		\foreach \n in {1,...,17}{%
 			\hanzibox{}{inner=\innerStyle}%
 			\hspace{-0.4pt}%
 		}%
