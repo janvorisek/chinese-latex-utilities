@@ -1,0 +1,73 @@
+% Name: Demo Words
+% Description: Basic words - explanation
+% 
+% Last modified
+% Date: 2018/03/22
+% Author: Jan Vorisek <jan@vorisek.me>
+
+\documentclass[]{report}
+
+\usepackage{hanzibox} % Display character boxes with various options
+\usepackage{hyperref} % for http link
+\usepackage{lastpage} % show page/lastPage
+\usepackage{fancyhdr}
+\usepackage[top=2.5cm,bottom=1.5cm,left=2.5cm,right=1.5cm,headsep=1cm,footskip=0pt]{geometry}
+
+\pagestyle{fancy}
+
+\setlength{\parindent}{0pt}
+
+% Header
+\lhead{I. The basics}
+\rhead{}
+
+% Footer
+\lfoot{}
+\cfoot{\thepage/\pageref{LastPage}}
+\rfoot{\url{https://hanzisheets.vorisek.me}}
+
+% Border under header and over footer
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+		
+	\subsubsection*{Personal pronouns}
+	
+	\hanzibox{pinyin=wo3, character=我, translation={me}}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=ni3, character=你, translation={you}}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=ta1, character=他, translation={he}}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=ta1, character=她, translation={she}}{}\hspace{1cm}%
+	\hanzibox{pinyin=wo3, character=我, translation={me}}{}\hspace{-0.4pt}%
+	\hanzibox{pinyin=men5, character=们, translation={(plural)}}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=ni3, character=你, translation={you}}{}\hspace{-0.4pt}%
+	\hanzibox{pinyin=men5, character=们, translation={(plural)}}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=ta1, character=他, translation={he}}{}\hspace{-0.4pt}%
+	\hanzibox{pinyin=men5, character=们, translation={(plural)}}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=ta1, character=她, translation={she}}{}\hspace{-0.4pt}%
+	\hanzibox{pinyin=men5, character=们, translation={(plural)}}{}\hspace{1cm}%
+	\hanzibox{pinyin=dou1, character=都, translation={all, both}}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=ye3, character=也, translation={also, too}}{}%
+
+	\subsubsection*{Numerals}
+	
+	\hanzibox{pinyin=ling2, character=零, translation=0}{}\hspace{1cm}%
+	\hanzibox{pinyin=yi1, character=一, translation=1}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=er4, character=二, translation=2}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=san1, character=三, translation=3}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=si4, character=四, translation=4}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=wu3, character=五, translation=5}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=liu4, character=六, translation=6}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=qi1, character=七, translation=7}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=ba1, character=八, translation=8}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=jiu3, character=九, translation=9}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=liu4, character=十, translation=10}{}\hspace{1cm}%
+	\hanzibox{pinyin=bai3, character=百, translation=100}{}%
+	
+	\subsubsection*{Basic family}
+	
+	\hanzibox{pinyin=ma1ma5, character=妈妈, translation={mother}}{}\hspace{0.2cm}%
+	\hanzibox{pinyin=ba4ba5, character=爸爸, translation={father}}{}
+	
+
+\end{document} 
