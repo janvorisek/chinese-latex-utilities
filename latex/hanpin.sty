@@ -1,0 +1,94 @@
+% Name: hanpin
+% Description: Package for handling pinyin in LaTeX
+% 
+% Last modified
+% Date: 2018/03/10
+% Author: ???
+% Note: Code was found on Stack Exchange https://tex.stackexchange.com/questions/35051/typesetting-pinyin-finals
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{hanpin}[2018/03/10 hanpin]
+
+\RequirePackage[UTF8]{ctex}
+
+% Definitions of Pinyin
+\makeatletter
+
+\def\py@yunpriv#1{%
+	\if a#1 10\else
+	\if o#1 9\else
+	\if e#1 8\else
+	\if i#1 6\else
+	\if u#1 7\else
+	\if v#1 5\else
+	\if A#1 4\else
+	\if O#1 3\else
+	\if E#1 2\fi\fi\fi\fi\fi\fi\fi\fi\fi0
+}
+
+\def\py@init{%
+	\edef\py@befirst{}%
+	\edef\py@char{}\edef\py@tuneletter{}%
+	\def\py@last{}%
+	\def\py@tune{5}%
+}
+
+% Usage:
+% \pinyin{Hao3hao3\ xue2xi2} （好好学习）
+\def\pinyin#1{%
+	\edef\py@postscan{#1}%
+	\py@init
+	% scan
+	\loop
+	\edef\py@char{\expandafter\@car\py@postscan\@nil}%
+	\edef\py@postscan{\expandafter\@cdr\py@postscan\@nil}%
+	\ifnum 0 < 0\py@char
+	\edef\py@tune{\py@char}%
+	\py@first \py@tuneat\py@tuneletter\py@tune \py@last\kern -4sp\kern 4sp{}\py@init
+	\else
+	\ifnum\py@yunpriv\py@char > \py@yunpriv\py@tuneletter
+	\edef\py@tuneletter{\py@char}\edef\py@first{\py@befirst}\def\py@last{}%
+	\else
+	\edef\py@last{\py@last\if v\py@char\"u\else\py@char\fi}%
+	\fi
+	\edef\py@befirst{\py@befirst\if v\py@char\"u\else\py@char\fi}%
+	\fi
+	\ifx\py@postscan\@empty\else
+	\repeat
+}
+
+\let\py@macron \=
+\let\py@acute \'
+\let\py@hacek \v
+\let\py@grave \`
+
+%% \py@tuneat{Letter}{tune}
+\def\py@tuneat#1#2{%
+	\if v#1%
+	\py@tune@v #2%
+	\else
+	\if i#1%
+	\py@tune@i #2%
+	\else
+	\ifcase#2%
+	\or\py@macron #1\or\py@acute #1\or\py@hacek #1\or\py@grave #1\else #1%
+	\fi
+	\fi\fi
+}
+
+\def\py@tune@v#1{{%
+		\dimen@ii 1ex%
+		\fontdimen5\font 1.1ex%
+		\rlap{\"u}%
+		\fontdimen5\font .6ex%
+		\ifcase#1%
+		\or\py@macron u\or\py@acute u\or\py@hacek u\or\py@grave u\else u%
+		\fi
+		\fontdimen5\font\dimen@ii
+}}
+
+\def\py@tune@i#1{%
+	\ifcase#1
+	\or\py@macron \i\or\py@acute \i\or\py@hacek \i\or\py@grave \i\else i%
+	\fi
+}
